@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import GradeCalculator from './GradeCalculator';
 import './App.css';
 
+// The app/website basically this
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="Title">
+      <header className="Home-header">
+        <p>Calculate My Grades</p>
+        <a className='buttonTo' href="/grade-calculator"> Click Me</a>
       </header>
     </div>
   );
 }
 
-export default App;
+function Main() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/grade-calculator" element={<GradeCalculator />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default Main;
