@@ -28,6 +28,7 @@ function GradeCalculator() {
 
   };
 
+  // The HTML return how it returns the contents of the page.
   return (
     <div>
       <p>Calculate My Grades</p>
