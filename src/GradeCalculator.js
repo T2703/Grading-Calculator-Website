@@ -1,101 +1,89 @@
 import React, { useState, useEffect } from 'react';
 
+// The grade calculator page. 
 function GradeCalculator() {
-  // Rows/Arrays for each one.
-  const [assignmentName, setAssignmentName] = useState('');
-  const [assignmentWeight, setAssignmentWeight] = useState('');
-  const [grades, setGrades] = useState('');
-  const [assignmentItself, setAssignmentItself] = useState([]);
+  const [assignmentItself, setAssignmentItself] = useState([
+    { name: '', weight: '', grade: '' },
+    { name: '', weight: '', grade: '' },
+    { name: '', weight: '', grade: '' },
+  ]);
+  
+  const [calculatedGrades, setCalculatedGrades] = useState([]);
 
-  // Handles the change event.
-  const handleChange = (event, field) => {
-    const [property, index] = field.split('_');
+  const handleChange = (index, property, value) => {
     setAssignmentItself((prevAssignments) => {
       const newAssignments = [...prevAssignments];
       newAssignments[index] = {
         ...newAssignments[index],
-        [property]: event.target.value,
+        [property]: value,
       };
       return newAssignments;
     });
   };
 
-  // Start off with 3 rows.
-  useEffect(() => {
-    setAssignmentItself([
-      { name: '', weight: '', grade: '' },
-      { name: '', weight: '', grade: '' },
-      { name: '', weight: '', grade: '' },
-    ]);
-  }, []);
-
-  const AssignmentRow = ({ assignment, index, handleChange }) => (
-    <div key={index}>
-      <input
-        type="text"
-        name={`assignmentName_${index}`}
-        value={assignment.name}
-        onChange={(e) => handleChange(e, `name_${index}`)}
-        placeholder="Assignment Name"
-      />
-      <input
-        type="text"
-        name={`assignmentWeight_${index}`}
-        value={assignment.weight}
-        onChange={(e) => handleChange(e, `weight_${index}`)}
-        placeholder="Weight"
-      />
-      <input
-        type="text"
-        name={`grades_${index}`}
-        value={assignment.grade}
-        onChange={(e) => handleChange(e, `grade_${index}`)}
-        placeholder="Grade"
-      />
-    </div>
-  );
-
-  // Handles the submission.
+  // Handle the on click events.
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Create a new object representing the assignment.
-    const newAssignment = {
-      name: assignmentName,
-      weight: assignmentWeight,
-      grade: grades,
-    };
-
-    // Add the new assignment to the array of assignments.
-    setAssignmentItself((prevAssignments) => [...prevAssignments, newAssignment]);
-
+    const calculatedAssignments = assignmentItself.map(gradeCalulationForAssignment);
+    setCalculatedGrades(calculatedAssignments);
+    console.log("Calculated Grades:", calculatedAssignments);
   };
 
-  // Adds a new empty row.
   const addRow = () => {
-        setAssignmentItself((prevAssignments => [...prevAssignments, {nmae: '', weight: '', grade: ''}]));
+    setAssignmentItself((prevAssignments) => [...prevAssignments, { name: '', weight: '', grade: '' }]);
   };
 
-  // The HTML return how it returns the contents of the page.
+  function gradeCalulationForAssignment(assignment) {
+    const { weight, grade } = assignment;
+    const newWeight = weight / 100;
+    const finalGrade = newWeight * grade;
+    return finalGrade; 
+  }
+
   return (
     <div>
-      <p>Calculate My Grades</p>
+      <p>Grade Calculator</p>
       <form onSubmit={handleSubmit}>
         {assignmentItself.map((assignment, index) => (
-          <AssignmentRow
-            key={index}
-            assignment={assignment}
-            index={index}
-            handleChange={handleChange}
-          />
+          <div key={index}>
+            <input
+              type="text"
+              name={`assignmentName_${index}`}
+              value={assignment.name}
+              onChange={(e) => handleChange(index, 'name', e.target.value)}
+              placeholder="Assignment Name"
+            />
+            <input
+              type="text"
+              name={`assignmentWeight_${index}`}
+              value={assignment.weight}
+              onChange={(e) => handleChange(index, 'weight', e.target.value)}
+              placeholder="Weight"
+            />
+            <input
+              type="text"
+              name={`grades_${index}`}
+              value={assignment.grade}
+              onChange={(e) => handleChange(index, 'grade', e.target.value)}
+              placeholder="Grade"
+            />
+            <p>Calculated Grade: {calculatedGrades[index]}</p>
+          </div>
         ))}
         <button type="submit">Submit</button>
-        <button type="button" onClick={addRow}>
-          Add Row
-        </button>
+        <button type="button" onClick={addRow}>Add Row</button>
       </form>
     </div>
   );
 }
 
 export default GradeCalculator;
+
+export function App() {
+  return (
+    <div>
+      <GradeCalculator />
+    </div>
+  );
+}
