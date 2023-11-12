@@ -59,6 +59,7 @@ function GradeCalculator() {
   // The HTML page.
   return (
     <div>
+      <header className="Home-header">
       <p>Grade Calculator</p>
       <form onSubmit={handleSubmit}>
         {assignmentItself.map((assignment, index) => (
@@ -91,6 +92,7 @@ function GradeCalculator() {
         <button type="submit">Submit</button>
         <button type="button" onClick={addRow}>Add Row</button>
       </form>
+      </header>
     </div>
   );
 }
