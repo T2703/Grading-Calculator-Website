@@ -43,6 +43,11 @@ function GradeCalculator() {
     setAssignmentItself((prevAssignments) => [...prevAssignments, { name: '', weight: '', grade: '' }]);
   };
 
+  // Method to delete a row. 
+  const deleteRow = (index) => {
+    setAssignmentItself((prevAssignments) => prevAssignments.filter((_, i) => i !== index));
+  };
+
   // Calculates the final grade for an assignment.
   function gradeCalulationForAssignment(assignment) {
     const { weight, grade } = assignment;
@@ -79,6 +84,7 @@ function GradeCalculator() {
               onChange={(e) => handleChange(index, 'grade', e.target.value)}
               placeholder="Grade"
             />
+            <button type="delete" onClick={() => deleteRow(index)}>Delete</button>
           </div>
         ))}
         <p>Total Grade: {totalGrade}</p>
