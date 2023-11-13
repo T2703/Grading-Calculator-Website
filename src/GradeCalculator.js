@@ -12,6 +12,8 @@ function GradeCalculator() {
   // Grade stuff.
   const [calculatedGrades, setCalculatedGrades] = useState([]);
   const [totalGrade, setTotalGrade] = useState(0);
+  const [currentGrade, setCurrentGrade] = useState('');
+
 
   // Handles the changes like the rows for this instance.
   const handleChange = (index, property, value) => {
@@ -31,11 +33,47 @@ function GradeCalculator() {
 
     // Calling the math stuff. 
     const calculatedAssignments = assignmentItself.map(gradeCalulationForAssignment);
-    setCalculatedGrades(calculatedAssignments);
-    const sum = calculatedAssignments.reduce((acc, grade) => acc + grade, 0);
-    setTotalGrade(sum);
+    const totalWeightedGrade = calculatedAssignments.reduce((acc, assignment) => acc + assignment.weightedGrade, 0);
+    const totalWeight = calculatedAssignments.reduce((acc, assignment) => acc + assignment.weight, 0);
+    const weightedAverage = (totalWeightedGrade / totalWeight).toFixed(2);
+    let letterGrade;
 
-    console.log("Calculated Grades:", calculatedAssignments);
+    // Checking if the weightedAverage and determining what the currentGrade should be.
+    if (weightedAverage >= 90) {
+      letterGrade = "A";
+      if (weightedAverage >= 93) {
+        letterGrade += "+";
+      } else if (weightedAverage >= 90.7) {
+        letterGrade += "-";
+      }
+    } else if (weightedAverage >= 80) {
+      letterGrade = "B";
+      if (weightedAverage >= 86) {
+        letterGrade += "+";
+      } else if (weightedAverage >= 80.7) {
+        letterGrade += "-";
+      }
+    } else if (weightedAverage >= 70) {
+      letterGrade = "C";
+      if (weightedAverage >= 76) {
+        letterGrade += "+";
+      } else if (weightedAverage >= 70.7) {
+        letterGrade += "-";
+      }
+    } else if (weightedAverage >= 60) {
+      letterGrade = "D";
+      if (weightedAverage >= 66) {
+        letterGrade += "+";
+      } else if (weightedAverage >= 60.7) {
+        letterGrade += "-";
+      }
+    } else {
+      letterGrade = "F";
+    }
+
+    setCalculatedGrades(calculatedAssignments);
+    setTotalGrade(weightedAverage);
+    setCurrentGrade(letterGrade)
   };
 
   // Method to add a new row. 
@@ -51,9 +89,10 @@ function GradeCalculator() {
   // Calculates the final grade for an assignment.
   function gradeCalulationForAssignment(assignment) {
     const { weight, grade } = assignment;
-    const newWeight = weight / 100;
-    const finalGrade = newWeight * grade;
-    return finalGrade; 
+    return {
+      weightedGrade: (weight / 100) * grade,
+      weight: weight / 100,
+    };
   }
 
   // The HTML page.
@@ -89,6 +128,7 @@ function GradeCalculator() {
           </div>
         ))}
         <p>Total Grade: {totalGrade}</p>
+        <p>Letter Grade: {currentGrade}</p>
         <button type="submit">Submit</button>
         <button type="button" onClick={addRow}>Add Row</button>
       </form>
