@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './GradeCalculator.css';
 
 // The grade calculator page. 
 function GradeCalculator() {
