@@ -22,7 +22,7 @@ function Main() {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/grade-calculator" element={<GradeCalculator />} />
-        <Route path="/gpa-calculator" element={<GradeCalculator />} />
+        <Route path="/gpa-calculator" element={<GpaCalculator />} />
       </Routes>
     </Router>
   );
