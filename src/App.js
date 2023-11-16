@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import GradeCalculator from './GradeCalculator';
-import GpaCalculator from './GpaCalculator';
+import GpaCalculator from './GpaCalculator.js';
 import './App.css';
 
 // The app/website basically this
