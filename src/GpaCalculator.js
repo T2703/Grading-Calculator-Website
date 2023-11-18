@@ -38,7 +38,7 @@ function GpaCalculator() {
     const calculatedCourseGrade = assignmentItself.map(gradeCalulationForCourse);
     const totalGradePoints = calculatedCourseGrade.reduce((acc, course) => acc + course.courseGrade * course.credits, 0);
     const totalCredits = calculatedCourseGrade.reduce((acc, course) => acc + course.credits, 0);
-    const calculatedGPA = totalGradePoints / totalCredits || 0;
+    const calculatedGPA = (totalGradePoints / totalCredits || 0).toFixed(2);
 
     setCalculatedGrades(calculatedCourseGrade);
     setTotalGrade(totalGradePoints);
@@ -60,8 +60,7 @@ function GpaCalculator() {
   // Calculates the grade for a course.
   function gradeCalulationForCourse(course) {
     const { credits, grade } = course;
-
-
+  
     const gradePoints = {
       'A+': 4.0,
       'A': 4.0,
@@ -77,13 +76,16 @@ function GpaCalculator() {
       'D-': 0.67,
       'F': 0.0,
     };
-
-    // Calculations.
+  
+    // Ensure that credits is treated as a number
+    const numericCredits = parseFloat(credits) || 0;
+  
+    // Calculations
     const courseGradePoints = gradePoints[grade.toUpperCase()] || 0;
-
+  
     return {
       courseGrade: courseGradePoints,
-      credits: credits,
+      credits: numericCredits,
     };
   }
 
