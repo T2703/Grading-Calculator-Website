@@ -8,9 +8,32 @@ function App() {
   return (
     <div className="Title">
       <header className="Home-header">
-        <p>Calculate My Grades</p>
-        <a className='buttonTo' href="/grade-calculator"> Grade Calculator</a>
-        <a className='buttonTo' href="/gpa-calculator"> Gpa Calculator</a>
+        <p>Calculate My Grades Or GPA</p>
+        <div className="buttonContainer">
+          <a className='buttonTo' href="/grade-calculator">
+            <img
+              src="/grade-calc.png"
+              alt="Grade Calculator Icon"
+              style={{ width: '300px', height: '300px' }}
+            />
+            Grade Calculator
+          </a>
+          <a className='buttonTo' href="/gpa-calculator">
+            <img
+              src="/gpa-calc.png"  
+              alt="GPA Calculator Icon"
+              style={{ width: '300px', height: '300px' }}
+            />
+            GPA Calculator
+          </a>
+        </div>
+        <p>
+          Ever needed to calculate your grade or GPA quickly? 
+          <br />
+          You have come to the right place.
+          <br />
+          Just use one of the calculators for your grading needs.
+        </p>
       </header>
     </div>
   );

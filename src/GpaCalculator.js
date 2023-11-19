@@ -34,7 +34,7 @@ function GpaCalculator() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Calling the math stuff. 
+    // Calling the math stuff & doing more calculations. 
     const calculatedCourseGrade = assignmentItself.map(gradeCalulationForCourse);
     const totalGradePoints = calculatedCourseGrade.reduce((acc, course) => acc + course.courseGrade * course.credits, 0);
     const totalCredits = calculatedCourseGrade.reduce((acc, course) => acc + course.credits, 0);
@@ -79,9 +79,10 @@ function GpaCalculator() {
   
     // Ensure that credits is treated as a number
     const numericCredits = parseFloat(credits) || 0;
+    
   
-    // Calculations
-    const courseGradePoints = gradePoints[grade.toUpperCase()] || 0;
+    // Calculations & Default value.
+    const courseGradePoints = gradePoints[(grade || 'A+').toUpperCase()] || 0;
   
     return {
       courseGrade: courseGradePoints,
@@ -111,13 +112,25 @@ function GpaCalculator() {
               onChange={(e) => handleChange(index, 'credits', e.target.value)}
               placeholder="Credits"
             />
-            <input
-              type="text"
-              name={`grades_${index}`}
-              value={assignment.grade}
-              onChange={(e) => handleChange(index, 'grade', e.target.value)}
-              placeholder="Grade"
-            />
+            <select
+                name={`grades_${index}`}
+                value={assignment.grade}
+                onChange={(e) => handleChange(index, 'grade', e.target.value)}
+              >
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="B-">B-</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="C-">C-</option>
+                <option value="D+">D+</option>
+                <option value="D">D</option>
+                <option value="D-">D-</option>
+                <option value="F">F</option>
+              </select>
             <button type="delete" onClick={() => deleteRow(index)}>Delete</button>
           </div>
         ))}
