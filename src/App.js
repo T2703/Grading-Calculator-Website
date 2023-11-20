@@ -27,7 +27,7 @@ function App() {
             GPA Calculator
           </a>
         </div>
-        <p>
+        <p style={{ textAlign: 'center' }} > 
           Ever needed to calculate your grade or GPA quickly? 
           <br />
           You have come to the right place.

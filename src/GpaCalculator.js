@@ -93,8 +93,8 @@ function GpaCalculator() {
   // The HTML page.
   return (
     <div>
-      <header className="Home-header">
-      <p>GPA Calculator</p>
+      <header className="Calc-header">
+      <p style={{ textAlign: 'center' }}>GPA Calculator <br /> GPA: {gpa}</p>
       <form onSubmit={handleSubmit}>
         {assignmentItself.map((assignment, index) => (
           <div key={index}>
@@ -103,7 +103,7 @@ function GpaCalculator() {
               name={`assignmentName_${index}`}
               value={assignment.name}
               onChange={(e) => handleChange(index, 'name', e.target.value)}
-              placeholder="Course Name"
+              placeholder="Course Name (Optional)"
             />
             <input
               type="text"
@@ -134,9 +134,10 @@ function GpaCalculator() {
             <button type="delete" onClick={() => deleteRow(index)}>Delete</button>
           </div>
         ))}
-        <p>GPA: {gpa}</p>
-        <button type="submit">Submit</button>
+        <div className='button-container'>
+        <button type="submit">Calculate</button>
         <button type="button" onClick={addRow}>Add Row</button>
+        </div>
       </form>
       </header>
     </div>

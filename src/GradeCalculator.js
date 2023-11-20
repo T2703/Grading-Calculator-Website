@@ -39,38 +39,32 @@ function GradeCalculator() {
     const weightedAverage = (totalWeightedGrade / totalWeight).toFixed(2);
     let letterGrade;
 
-    // Checking if the weightedAverage and determining what the currentGrade should be.
-    if (weightedAverage >= 90) {
-      letterGrade = "A";
-      if (weightedAverage >= 93) {
-        letterGrade += "+";
-      } else if (weightedAverage >= 90.7) {
-        letterGrade += "-";
-      }
-    } else if (weightedAverage >= 80) {
-      letterGrade = "B";
-      if (weightedAverage >= 86) {
-        letterGrade += "+";
-      } else if (weightedAverage >= 80.7) {
-        letterGrade += "-";
-      }
-    } else if (weightedAverage >= 70) {
-      letterGrade = "C";
-      if (weightedAverage >= 76) {
-        letterGrade += "+";
-      } else if (weightedAverage >= 70.7) {
-        letterGrade += "-";
-      }
-    } else if (weightedAverage >= 60) {
-      letterGrade = "D";
-      if (weightedAverage >= 66) {
-        letterGrade += "+";
-      } else if (weightedAverage >= 60.7) {
-        letterGrade += "-";
-      }
-    } else {
-      letterGrade = "F";
-    }
+  // Checking if the weightedAverage and determining what the currentGrade should be.
+  if (weightedAverage >= 93) {
+    letterGrade = "A";
+  } else if (weightedAverage >= 90) {
+    letterGrade = "A-";
+  } else if (weightedAverage >= 87) {
+    letterGrade = "B+";
+  } else if (weightedAverage >= 83) {
+    letterGrade = "B";
+  } else if (weightedAverage >= 80) {
+    letterGrade = "B-";
+  } else if (weightedAverage >= 77) {
+    letterGrade = "C+";
+  } else if (weightedAverage >= 73) {
+    letterGrade = "C";
+  } else if (weightedAverage >= 70) {
+    letterGrade = "C-";
+  } else if (weightedAverage >= 67) {
+    letterGrade = "D+";
+  } else if (weightedAverage >= 63) {
+    letterGrade = "D";
+  } else if (weightedAverage >= 60) {
+    letterGrade = "D-";
+  } else {
+    letterGrade = "F";
+  }
 
     setCalculatedGrades(calculatedAssignments);
     setTotalGrade(weightedAverage);
@@ -99,8 +93,10 @@ function GradeCalculator() {
   // The HTML page.
   return (
     <div>
-      <header className="Home-header">
-      <p>Grade Calculator</p>
+      <header className="Calc-header">
+      <p style={{ textAlign: 'center' }}>Grade Calculator  
+      <br /> Total Grade: {totalGrade}           
+      <br />Letter Grade: {currentGrade}</p>
       <form onSubmit={handleSubmit}>
         {assignmentItself.map((assignment, index) => (
           <div key={index}>
@@ -109,7 +105,7 @@ function GradeCalculator() {
               name={`assignmentName_${index}`}
               value={assignment.name}
               onChange={(e) => handleChange(index, 'name', e.target.value)}
-              placeholder="Assignment Name"
+              placeholder="Assignment Name (Optional)"
             />
             <input
               type="text"
@@ -128,10 +124,10 @@ function GradeCalculator() {
             <button type="delete" onClick={() => deleteRow(index)}>Delete</button>
           </div>
         ))}
-        <p>Total Grade: {totalGrade}</p>
-        <p>Letter Grade: {currentGrade}</p>
-        <button type="submit">Submit</button>
+        <div className='button-container'>
+        <button type="submit">Calculate</button>
         <button type="button" onClick={addRow}>Add Row</button>
+        </div>
       </form>
       </header>
     </div>
