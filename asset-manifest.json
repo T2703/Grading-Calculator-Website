@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/grading-calc/static/css/main.a6912a34.css",
+    "main.js": "/grading-calc/static/js/main.f74a98b4.js",
+    "static/js/787.12974b6e.chunk.js": "/grading-calc/static/js/787.12974b6e.chunk.js",
+    "index.html": "/grading-calc/index.html",
+    "main.a6912a34.css.map": "/grading-calc/static/css/main.a6912a34.css.map",
+    "main.f74a98b4.js.map": "/grading-calc/static/js/main.f74a98b4.js.map",
+    "787.12974b6e.chunk.js.map": "/grading-calc/static/js/787.12974b6e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a6912a34.css",
+    "static/js/main.f74a98b4.js"
+  ]
+}
