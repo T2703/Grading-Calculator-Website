@@ -62,7 +62,6 @@ function GpaCalculator() {
     const { credits, grade } = course;
   
     const gradePoints = {
-      'A+': 4.0,
       'A': 4.0,
       'A-': 3.67,
       'B+': 3.33,
@@ -75,6 +74,7 @@ function GpaCalculator() {
       'D': 1.0,
       'D-': 0.67,
       'F': 0.0,
+      '-': 0.0
     };
   
     // Ensure that credits is treated as a number
@@ -117,7 +117,7 @@ function GpaCalculator() {
                 value={assignment.grade}
                 onChange={(e) => handleChange(index, 'grade', e.target.value)}
               >
-                <option value="A+">A+</option>
+                <option value="-">-</option>
                 <option value="A">A</option>
                 <option value="A-">A-</option>
                 <option value="B+">B+</option>

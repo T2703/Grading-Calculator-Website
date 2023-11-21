@@ -2,7 +2,6 @@
   text-align: top;
 }
 
-
 .Home-header {
   background-color: #ffffff;
   min-height: 100vh;
@@ -20,19 +19,18 @@
   align-items: center;
   text-decoration: none;
   color: #000;
-  padding: 60px;
+  padding: 10%;
+  margin: 10px;
   border: 1px solid #ccc;
   background-color: #f0f0f08c;
   border-radius: 10px;
   transition: background-color 0.3s ease;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-
 }
 
 .buttonContainer {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
 }
 
 .buttonTo:hover {
@@ -44,5 +42,12 @@
 }
 
 body {
-  font-family: 'Roboto Mono', monospace; 
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Media Query for smaller screens (adjust as needed) */
+@media (max-width: 600px) {
+  .buttonTo {
+    width: 45%; /* Adjust the width to leave space for both buttons */
+  }
 }

@@ -1,26 +1,25 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import GradeCalculator from './GradeCalculator';
 import GpaCalculator from './GpaCalculator.js';
 import './App.css';
 
-// The app/website basically this
 function App() {
   return (
     <div className="Title">
       <header className="Home-header">
         <p>Calculate My Grades Or GPA</p>
         <div className="buttonContainer">
-          <a className='buttonTo' href="/grade-calculator">
+          <a className='buttonTo' href="#/grade-calculator">
             <img
-              src="/grade-calc.png"
+              src={process.env.PUBLIC_URL + '/grade-calc.png'}
               alt="Grade Calculator Icon"
               style={{ width: '300px', height: '300px' }}
             />
             Grade Calculator
           </a>
-          <a className='buttonTo' href="/gpa-calculator">
+          <a className='buttonTo' href="#/gpa-calculator">
             <img
-              src="/gpa-calc.png"  
+              src={process.env.PUBLIC_URL + '/gpa-calc.png'}
               alt="GPA Calculator Icon"
               style={{ width: '300px', height: '300px' }}
             />
