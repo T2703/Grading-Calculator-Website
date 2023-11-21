@@ -117,6 +117,7 @@ function GpaCalculator() {
                 value={assignment.grade}
                 onChange={(e) => handleChange(index, 'grade', e.target.value)}
               >
+                <option value="-">-</option>
                 <option value="A">A</option>
                 <option value="A-">A-</option>
                 <option value="B+">B+</option>
