@@ -45,9 +45,44 @@ body {
   font-family: 'Roboto Mono', monospace;
 }
 
-/* Media Query for smaller screens (adjust as needed) */
-@media (max-width: 600px) {
-  .buttonTo {
-    width: 45%; /* Adjust the width to leave space for both buttons */
+/* Media Query for smaller screens */
+@media (min-width: 600px) {
+  /* Your regular styles for larger screens */
+  
+  .buttonContainer {
+    flex-direction: row;
   }
+
+  .buttonTo {
+    width: 45%;
+  }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 599px) {
+  .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    margin: 5px; 
+    width: 80%; 
+  }
+
+  .buttonTo {
+    display: row;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    padding: 10%; /* Adjust the padding value */
+    margin: 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f08c;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  /* You can add more styles for other elements in the mobile view */
 }
