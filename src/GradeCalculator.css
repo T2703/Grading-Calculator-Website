@@ -47,3 +47,17 @@
   button:hover {
     background-color: #2980b9;
   }
+  
+/* Mobile-specific styles */
+@media (max-width: 599px) {
+  input,
+  select,
+  button {
+    width: auto; /* Reset width for a more natural stacking on mobile */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    margin: 5px; 
+  }
+}
