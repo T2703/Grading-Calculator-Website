@@ -25,7 +25,12 @@ Features:
 - Displays letter grade and percentage for courses and GPA well for GPA.
 - GPA calculator page has a list of grades to choose from.
 - Able to put down the information needed for the calculators.
+- Mobile friendly view.
 _________________________
 
 Pictures:
 - Home: ![Home](https://github.com/T2703/Grading-Calculator-Webiste/assets/113402224/dcad5990-5aa0-407c-9081-9a344c024c72)
+- Grade Calculator: ![Grade Calc](https://github.com/T2703/Grading-Calculator-Webiste/assets/113402224/ac770bb8-847a-4abd-a344-851895856339)
+- GPA Calculator: ![GPA Calc](https://github.com/T2703/Grading-Calculator-Webiste/assets/113402224/4e829c91-04dc-477f-8243-f296abf2ce6c)
+
+A very useful tool if to check if you're doing fine in your education or if you need to push it a little bit harder.
