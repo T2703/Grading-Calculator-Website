@@ -2,9 +2,6 @@
 _________________________
 
 A website with the sole purpose of calculating course grades and GPAs quickly and with accurate results. 
-
-Link:
-- https://t2703.github.io/Grading-Calculator-Webiste/
 _________________________
 
 Technologies:
